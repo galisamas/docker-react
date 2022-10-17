@@ -1,0 +1,11 @@
+language: generic 
+
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t galisamas/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true galisamas/docker-react npm run test
